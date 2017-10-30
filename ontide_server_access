@@ -1,0 +1,45 @@
+Ontide ubuntu linux서버는 aws(아마존 클라우드 서비스)에 구축되어 있고, telnet은  putty 프로그램을 통해 SSH 프로토콜로 접속한다. ftp는 WinSCP 프로그램을 통해 sftp 프로토콜로 접속한다.
+ontide 서버접속.zip 파일 목록( 총 4개)
+1. how-to-login ontide.txt
+2. ontiderealone.ppk 
+   - putty 접속설정에 필요한 암호화키파일
+3. putty.exe
+   - putty 실행파일
+4. puttygen.exe
+   - ppk암호화키파일 생성유틸
+등록&패스워드변경 이메일 위치 : Src/main/resources/config.properties.dev
+-------------------------------------------------------------------------------------------------------
+1. putty로 telnet접속
+1.1. putty 접속설정
+putty프로그램을 실행하면 Putty Configuration창이 뜨는데 host Name:아래 host 주소를 입력 Connection Type: SSH 를 선택하고 좌측 트리에서 connection > SSH > Auth로 이동
+Private key file for  authentication에 ontiderealone.ppk 파일을 추가한다.
+
+1.1.1. putty  접속 설정 저장
+다시 좌측트리에서 session항목으로 이동한 후 Saved Sessions에 session명을 입력하고 우측 Save버튼을 클릭
+
+추가: 한글설정
+좌측트리에서 Window > Appearance > Font Setting에서
+[Change..]버튼을 클릭. 폰트설정창에서 적당한  한글폰트 설정후 하단 스크립트에서 한글을 선택한다.(중요!!)
+
+* Ontide.com 상용서버
+host : ubuntu@ec2-13-124-1-173.ap-northeast-2.compute.amazonaws.com
+putty key passphrase: Hightide0227!
+1.2. putty로 접속
+putty configuration창에서 Saved Sessions에서  저장한  session을 더블클릭 또는  선택후 하단 [open]버튼을 클릭하면 telnet console창이 뜨고, user id 입력모드가 나온다.
+- user id인 ubuntu를 입력
+- key passphrase 입력창에서 위의 passphrase를 입력한다.
+
+2. WinSCP로 sftp접속
+2.1. download하기
+http://winscp.net/download/WinSCP-5.9.1-Portable.zip
+
+2.2. WinSCP 설정하기
+WinSCP.exe를 실행하면 Login설정창이 뜨는데, 
+- File Protocol : SFTP
+- host name : putty에서 사용한 host 주소
+- User name : ubuntu
+적당한 session명으로 저장한다.
+
+2.3. 접속하기 
+Login버튼을 누르면 접속실행 팝업이 뜨고 
+key passphrase입력모드가 뜬다.   putty에서 사용한 passphrase 를 입력한다.
